@@ -21,15 +21,37 @@ Salesperson.destroy_all
 
 # 2. insert 1-2 rows in salespeople table.
 
+new_salesperson = Salesperson.new
+
+new_salesperson["first_name"] = "Hans"
+new_salesperson["last_name"] = "Han"
+new_salesperson["email"] = "hans.han@gmail.com"
+new_salesperson.save
+
 # 3. write code to display how many salespeople rows are in the database
+
+puts "There are #{Salesperson.all.count} companies"
+puts Salesperson.inspect
 
 # ---------------------------------
 # Salespeople: 2
 
 # 4. modify/update column data for a row in the salespeople table.
 
+#hans = Salesperson.where({"first_name" => "Hans"})
+hans = Salesperson.find_by({"first_name" => "Hans"})
+hans["email"] = "hans.han@yahoo.com"
+hans.save
+
+puts hans.inspect
+
 # CHALLENGE:
 # 5. write code to display each salesperson's full name
+
+salespeople = Salesperson.all
+for salesperson in salespeople
+    puts "#{salesperson["first_name"]}"
+end
 
 # ---------------------------------
 # Salespeople: 2
